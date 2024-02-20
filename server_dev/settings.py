@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,12 +75,34 @@ WSGI_APPLICATION = 'server_dev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+if os.getenv('GAE_APPLICATION', None):
+	DATABASES = {
+		'default': {
+			'ENGINE'    : 'django.db.backends.mysql',
+			'NAME'      : 'gcp_kiyoung',
+			'USER'      : 'kiyoung',
+			'PASSWORD'  : 'eApZ$33C,O<7NnUk',
+			'HOST'      : '34.31.141.126',
+		}
+	}
+else:
+	DATABASES = {
+		'default':{
+			'ENGINE' : 'django.db.backends.mysql',
+			'NAME' : 'ky_deploy_no',
+			'USER' : 'root',
+			'PASSWORD' : '0000',
+			'HOST' : 'localhost',
+			'PORT' : '3306',
+		}
+	}
 
 
 # Password validation
