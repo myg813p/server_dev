@@ -82,27 +82,16 @@ WSGI_APPLICATION = 'server_dev.wsgi.application'
 #     }
 # }
 
-if os.getenv('GAE_APPLICATION', None):
-	DATABASES = {
-		'default': {
-			'ENGINE'    : 'django.db.backends.mysql',
-			'NAME'      : 'gcp_kiyoung',
-			'USER'      : 'kiyoung',
-			'PASSWORD'  : 'eApZ$33C,O<7NnUk',
-			'HOST'      : '34.31.141.126',
-		}
-	}
-else:
-	DATABASES = {
-		'default':{
-			'ENGINE' : 'django.db.backends.mysql',
-			'NAME' : 'ky_deploy_no',
-			'USER' : 'root',
-			'PASSWORD' : '0000',
-			'HOST' : 'localhost',
-			'PORT' : '3306',
-		}
-	}
+DATABASES = {
+    'default': {
+        'ENGINE'    : 'django.db.backends.mysql',
+        'NAME'      : 'gcp_kiyoung',
+        'USER'      : 'kiyoung',
+        'PASSWORD'  : 'eApZ$33C,O<7NnUk',
+        'HOST'      : '34.31.141.126',
+    }
+}
+
 
 
 # Password validation
